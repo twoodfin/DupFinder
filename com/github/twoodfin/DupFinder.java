@@ -5,8 +5,9 @@ import com.intersys.globals.Connection;
 
 public class DupFinder {
     public static void main(String argv[]) {
-	if (argv.length < 1) {
-	    System.err.println("Need a Globals directory.");
+	Connection connection = ConnectionContext.getConnection();
+	if (!connection.isConnected()) {
+	    connection.connect("USER", "_SYSTEM", "SYS");
 	}
     }
 }
